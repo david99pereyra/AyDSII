@@ -1,17 +1,17 @@
-package com.tp.tp3;
+package com.tp.tpSpark;
 
 import static spark.Spark.*;
 
-import com.tp.tp3.controller.CelsiusFahrenheitController;
-import com.tp.tp3.controller.ChisteController;
-import com.tp.tp3.controller.ClimaController;
-import com.tp.tp3.controller.ConvertidorController;
-import com.tp.tp3.controller.EsParController;
-import com.tp.tp3.controller.EsPrimoController;
-import com.tp.tp3.controller.HoraController;
-import com.tp.tp3.controller.InvertirController;
-import com.tp.tp3.controller.LibroController;
-import com.tp.tp3.controller.UsuarioController;
+import com.tp.tpSpark.controller.CelsiusFahrenheitController;
+import com.tp.tpSpark.controller.ChisteController;
+import com.tp.tpSpark.controller.ClimaController;
+import com.tp.tpSpark.controller.ConvertidorController;
+import com.tp.tpSpark.controller.EsParController;
+import com.tp.tpSpark.controller.EsPrimoController;
+import com.tp.tpSpark.controller.HoraController;
+import com.tp.tpSpark.controller.InvertirController;
+import com.tp.tpSpark.controller.LibroController;
+import com.tp.tpSpark.controller.UsuarioController;
 
 public class Main {
     public static void main(String[] args) {

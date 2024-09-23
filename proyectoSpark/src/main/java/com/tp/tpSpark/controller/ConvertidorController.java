@@ -1,4 +1,4 @@
-package com.tp.tp3.controller;
+package com.tp.tpSpark.controller;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -6,8 +6,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 import com.google.gson.Gson;
-import com.tp.tp3.model.Convertidor;
-import com.tp.tp3.model.RespuestaConvertidor;
+import com.tp.tpSpark.model.Convertidor;
+import com.tp.tpSpark.model.RespuestaConvertidor;
 
 import spark.*;
 

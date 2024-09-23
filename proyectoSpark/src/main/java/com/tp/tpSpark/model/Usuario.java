@@ -1,4 +1,4 @@
-package com.tp.tp3.model;
+package com.tp.tpSpark.model;
 import lombok.Data;
 
 @Data

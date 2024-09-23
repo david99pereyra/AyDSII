@@ -1,6 +1,6 @@
-package com.tp.tp3.controller;
+package com.tp.tpSpark.controller;
 
-import com.tp.tp3.model.EsPrimo;
+import com.tp.tpSpark.model.EsPrimo;
 
 import spark.Request;
 import spark.Response;

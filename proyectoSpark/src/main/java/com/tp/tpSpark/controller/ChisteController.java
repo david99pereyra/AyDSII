@@ -1,8 +1,8 @@
-package com.tp.tp3.controller;
+package com.tp.tpSpark.controller;
 
 import com.google.gson.Gson;
-import com.tp.tp3.model.Chiste;
-import com.tp.tp3.service.ChisteService;
+import com.tp.tpSpark.model.Chiste;
+import com.tp.tpSpark.service.ChisteService;
 
 import spark.Request;
 import spark.Response;

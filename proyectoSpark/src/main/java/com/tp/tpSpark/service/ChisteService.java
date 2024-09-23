@@ -1,7 +1,7 @@
-package com.tp.tp3.service;
+package com.tp.tpSpark.service;
 
 import com.google.gson.Gson;
-import com.tp.tp3.model.Chiste;
+import com.tp.tpSpark.model.Chiste;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

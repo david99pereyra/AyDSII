@@ -1,11 +1,11 @@
-package com.tp.tp3.controller;
+package com.tp.tpSpark.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.google.gson.Gson;
-import com.tp.tp3.model.Usuario;
+import com.tp.tpSpark.model.Usuario;
 
 import spark.Request;
 import spark.Response;

@@ -1,4 +1,4 @@
-package com.tp.tp3.model;
+package com.tp.tpSpark.model;
 
 public class EsPrimo {
     public boolean primazo(int numero) {

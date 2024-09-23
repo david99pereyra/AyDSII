@@ -1,5 +1,5 @@
 
-package com.tp.tp3.model;
+package com.tp.tpSpark.model;
 
 public class Hora {
 
