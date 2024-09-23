@@ -1,6 +1,6 @@
-package com.tp.spark.controller;
+package com.tp.tp3.controller;
 
-import com.tp.spark.model.Hora;
+import com.tp.tp3.model.Hora;
 
 import spark.Request;
 import spark.Response;

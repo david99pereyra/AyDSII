@@ -1,8 +1,8 @@
-package com.tp.spark.controller;
+package com.tp.tp3.controller;
 
 import spark.Route;
 
-import com.tp.spark.model.CelsiusFahrenheit;
+import com.tp.tp3.model.CelsiusFahrenheit;
 
 import spark.Request;
 import spark.Response;

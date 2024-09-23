@@ -1,8 +1,8 @@
-package com.tp.spark.controller;
+package com.tp.tp3.controller;
 
 import com.google.gson.Gson;
-import com.tp.spark.model.Clima;
-import com.tp.spark.service.ClimaService;
+import com.tp.tp3.model.Clima;
+import com.tp.tp3.service.ClimaService;
 
 import spark.Request;
 import spark.Response;

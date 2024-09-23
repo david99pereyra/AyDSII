@@ -1,6 +1,6 @@
-package com.tp.spark.controller;
+package com.tp.tp3.controller;
 
-import com.tp.spark.model.Invertidor;
+import com.tp.tp3.model.Invertidor;
 
 import spark.Request;
 import spark.Response;

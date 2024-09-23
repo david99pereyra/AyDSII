@@ -1,4 +1,4 @@
-package com.tp.spark.service;
+package com.tp.tp3.service;
 
 import java.net.URI;
 import java.net.URLEncoder;
@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
 import com.google.gson.Gson;
-import com.tp.spark.model.Clima;
+import com.tp.tp3.model.Clima;
 
 public class ClimaService {
     private final String API_KEY = "1dc6ff4b34fe2993cee8e3a2fa6db448";
