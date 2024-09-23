@@ -15,7 +15,10 @@ public class ClimaController {
     public Route getClima = (Request req, Response res) -> {
         String ciudad = req.params("ciudad");
         try {
-            Clima clima = ClimaService.getClima(ciudad);
+            ClimaService climaService = new ClimaService();
+            Clima clima = new Clima();
+            clima = climaService.getClima(ciudad);
+
             res.type("application/json");
 
             String result = "{" +

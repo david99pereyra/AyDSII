@@ -2,14 +2,14 @@ package com.tp.spark.model;
 
 public class Clima {
     private String name;
-    private Main main;
+    private Primary main;
     private Wind wind;
 
     public String getName() {
         return name;
     }
 
-    public Main getMain() {
+    public Primary getMain() {
         return main;
     }
 
@@ -17,7 +17,7 @@ public class Clima {
         return wind;
     }
 
-    public static class Main {
+    public static class Primary {
         private double temp;
         private int humidity;
 

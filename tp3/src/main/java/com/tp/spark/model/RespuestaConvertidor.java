@@ -10,13 +10,10 @@ public class RespuestaConvertidor {
     private double resultado;
     private String mensaje;
 
-
     public RespuestaConvertidor(String tipo, double monto, double resultado, String mensaje) {
         this.tipo = tipo;
         this.monto = monto;
         this.resultado = resultado;
         this.mensaje = mensaje;
     }
-    
-
 }
