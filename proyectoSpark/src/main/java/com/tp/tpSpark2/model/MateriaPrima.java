@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class MateriaPrima {
+    private int id;
     private String nombre;
     private String fecha_vto;
     private int stock;
@@ -14,6 +15,9 @@ public class MateriaPrima {
         this.fecha_vto = fecha_vto;
         this.stock = stock;
         this.unidad = unidad;
+    }
+
+    public MateriaPrima() {
     }
 
 }

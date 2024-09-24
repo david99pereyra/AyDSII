@@ -10,12 +10,33 @@ public class MateriaPrimaDAO implements InterfaceMateriaPrimaDAO {
 
     @Override
     public List<MateriaPrima> selectAll() {
-        throw new UnsupportedOperationException("Unimplemented method 'selectAll'");
+        String select = "SELECT * FROM MATERIA_PRIMA";
+        List<MateriaPrima> res;
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            res = con.createQuery(select).executeAndFetch(MateriaPrima.class);
+            return res;
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            return null;
+        }
+
     }
 
     @Override
-    public MateriaPrima select_MP(int id) {
-        throw new UnsupportedOperationException("Unimplemented method 'select_MP'");
+    public MateriaPrima select_MP(String nombre) {
+        String selectByName = "SELECT * FROM MATERIA_PRIMA WHERE nombre LIKE :nombre";
+        System.out.println(selectByName);
+        MateriaPrima mp;
+
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            mp = con.createQuery(selectByName)
+                    .addParameter("nombre", nombre)
+                    .executeAndFetchFirst(MateriaPrima.class);
+            return mp;
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
     @Override
@@ -38,13 +59,41 @@ public class MateriaPrimaDAO implements InterfaceMateriaPrimaDAO {
     }
 
     @Override
-    public boolean update_MP(MateriaPrima materiaPrima) {
-        throw new UnsupportedOperationException("Unimplemented method 'update_MP'");
+    public boolean update_MP(MateriaPrima materiaPrima, String nombreMP) {
+        String update = "UPDATE MATERIA_PRIMA SET nombre = :nombre, fecha_vto = :fecha_vto, stock = :stock, unidad = :unidad  WHERE nombre LIKE :nombreMP";
+        System.out.println(materiaPrima.getNombre());
+        System.out.println(nombreMP);
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            int result = con.createQuery(update)
+                    .addParameter("nombre", materiaPrima.getNombre())
+                    .addParameter("fecha_vto", materiaPrima.getFecha_vto())
+                    .addParameter("stock", materiaPrima.getStock())
+                    .addParameter("unidad", materiaPrima.getUnidad())
+                    .addParameter("nombreMP", "%" + nombreMP + "%")
+                    .executeUpdate()
+                    .getResult();
+
+            System.out.println(update);
+            return result > 0;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
-    public boolean delete_MP(MateriaPrima materiaPrima) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete_MP'");
+    public boolean delete_MP(String nombre) {
+
+        String delete = "DELETE FROM MATERIA_PRIMA WHERE nombre LIKE :nombre";
+
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            int result = con.createQuery(delete)
+                    .addParameter("nombre", "%" + nombre + "%")
+                    .executeUpdate()
+                    .getResult();
+            return result > 0;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

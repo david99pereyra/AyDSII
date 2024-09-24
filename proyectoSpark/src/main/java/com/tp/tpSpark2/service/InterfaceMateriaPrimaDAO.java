@@ -8,12 +8,12 @@ public interface InterfaceMateriaPrimaDAO {
 
     public List<MateriaPrima> selectAll();
 
-    public MateriaPrima select_MP(int id);
+    public MateriaPrima select_MP(String nombre);
 
     public boolean insert_MP(MateriaPrima materiaPrima);
 
-    public boolean update_MP(MateriaPrima materiaPrima);
+    public boolean update_MP(MateriaPrima materiaPrima, String nombre);
 
-    public boolean delete_MP(MateriaPrima materiaPrima);
+    public boolean delete_MP(String nombre);
 
 }
