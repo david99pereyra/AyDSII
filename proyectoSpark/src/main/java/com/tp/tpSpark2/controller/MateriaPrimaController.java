@@ -23,8 +23,8 @@ public class MateriaPrimaController {
         String unidad = req.queryParams("unidad");
 
         MateriaPrima mp = new MateriaPrima(nombre, fecha_vto, stock, unidad);
-
-        if (mpDAO.insert_MP(mp)) {
+        boolean resp = mpDAO.insert_MP(mp);
+        if (resp) {
             return gson.toJson(mp);
         } else {
             return "La informacion no ha sido ingresada con exito";
