@@ -25,7 +25,6 @@ public class MateriaPrimaDAO implements InterfaceMateriaPrimaDAO {
     @Override
     public MateriaPrima select_MP(String nombre) {
         String selectByName = "SELECT * FROM MATERIA_PRIMA WHERE nombre LIKE :nombre";
-        System.out.println(selectByName);
         MateriaPrima mp;
 
         try (Connection con = Sql2oDAO.getSql2o().open()) {
@@ -61,8 +60,7 @@ public class MateriaPrimaDAO implements InterfaceMateriaPrimaDAO {
     @Override
     public boolean update_MP(MateriaPrima materiaPrima, String nombreMP) {
         String update = "UPDATE MATERIA_PRIMA SET nombre = :nombre, fecha_vto = :fecha_vto, stock = :stock, unidad = :unidad  WHERE nombre LIKE :nombreMP";
-        System.out.println(materiaPrima.getNombre());
-        System.out.println(nombreMP);
+        
         try (Connection con = Sql2oDAO.getSql2o().open()) {
             int result = con.createQuery(update)
                     .addParameter("nombre", materiaPrima.getNombre())
@@ -73,7 +71,6 @@ public class MateriaPrimaDAO implements InterfaceMateriaPrimaDAO {
                     .executeUpdate()
                     .getResult();
 
-            System.out.println(update);
             return result > 0;
         } catch (Exception e) {
             return false;

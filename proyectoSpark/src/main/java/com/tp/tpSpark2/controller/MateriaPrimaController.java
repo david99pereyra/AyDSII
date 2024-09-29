@@ -67,7 +67,7 @@ public class MateriaPrimaController {
         String unidad = req.queryParams("unidad");
 
         MateriaPrima mp = new MateriaPrima(nombre, fecha_vto, stock, unidad);
-
+        
         if (mpDAO.update_MP(mp, nombreMP)) {
             return gson.toJson(mp);
         } else {
@@ -79,7 +79,8 @@ public class MateriaPrimaController {
         res.type("application/json");
         String nombreMP = req.params(":nombreMP");
 
-        if (mpDAO.delete_MP(nombreMP)) {
+        boolean resp = mpDAO.delete_MP(nombreMP);
+        if (resp) {
             return gson.toJson("El producto " + nombreMP.toUpperCase() + " fue eliminado con exito");
         } else {
             return "No existe esa Materia Prima";
