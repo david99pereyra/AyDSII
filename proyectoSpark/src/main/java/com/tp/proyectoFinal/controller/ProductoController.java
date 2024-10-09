@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.tp.proyectoFinal.model.Producto;
 import com.tp.proyectoFinal.service.ProductoDAO;
 
-import static spark.Spark.routes;
-
 import java.util.*;
 
 import spark.Request;
@@ -35,6 +33,20 @@ public class ProductoController {
         res.type("application/json");
         try {
             List<Producto> productos = prDAO.obtenerTodos();
+            res.status(200);
+            return gson.toJson(productos);
+        } catch (Exception e) {
+            res.status(500);
+            return gson.toJson("Error al obtener los productos, la concha de tu madre");
+        }
+    };
+
+    public static Route productosPorNombre = (Request req, Response res) -> {
+        res.type("application/json");
+        String nombre = req.params(":nombre");
+        System.out.println(nombre);
+        try {
+            List<Producto> productos = prDAO.productosPorNombre(nombre);
             res.status(200);
             return gson.toJson(productos);
         } catch (Exception e) {

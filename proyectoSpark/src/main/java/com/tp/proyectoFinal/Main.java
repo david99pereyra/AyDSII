@@ -11,6 +11,7 @@ public class Main {
 
         post("/producto", ProductoController.crear_producto);
         get("/producto", ProductoController.obtener_productos);
+        get("/producto/:nombre", ProductoController.productosPorNombre);
     }
 
 }

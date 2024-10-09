@@ -35,4 +35,18 @@ public class ProductoDAO {
         }
     }
 
+    public List<Producto> productosPorNombre(String nombre) {
+        String query = "SELECT * FROM PRODUCTO WHERE nombre_producto LIKE :nombre";
+        List<Producto> productos;
+
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            productos = con.createQuery(query)
+                    .addParameter("nombre", "%" + nombre + "%")
+                    .executeAndFetch(Producto.class);
+            return productos;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }
