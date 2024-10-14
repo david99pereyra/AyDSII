@@ -12,10 +12,10 @@ import spark.Route;
 
 public class MateriaPrimaController {
 
-    private MateriaPrimaDAO mpDAO = new MateriaPrimaDAO();
-    private Gson gson = new Gson();
+    private static MateriaPrimaDAO mpDAO = new MateriaPrimaDAO();
+    private static Gson gson = new Gson();
 
-    public Route insert_MP = (Request req, Response res) -> {
+    public static Route insert_MP = (Request req, Response res) -> {
         res.type("application/json");
         String nombre = req.queryParams("nombre");
         String fecha_vto = req.queryParams("fecha_vto");
@@ -31,7 +31,7 @@ public class MateriaPrimaController {
         }
     };
 
-    public Route selectAll = (Request req, Response res) -> {
+    public static Route selectAll = (Request req, Response res) -> {
         res.type("application/json");
         try {
             MateriaPrimaDAO mp = new MateriaPrimaDAO();
@@ -44,7 +44,7 @@ public class MateriaPrimaController {
         }
     };
 
-    public Route selectByName = (Request req, Response res) -> {
+    public static Route selectByName = (Request req, Response res) -> {
         res.type("application/json");
         String nombre = req.params(":nombre");
         try {
@@ -58,7 +58,7 @@ public class MateriaPrimaController {
         }
     };
 
-    public Route update_MP = (Request req, Response res) -> {
+    public static Route update_MP = (Request req, Response res) -> {
         res.type("application/json");
         String nombreMP = req.params(":nombreMP");
         String nombre = req.queryParams("nombre");
@@ -67,7 +67,7 @@ public class MateriaPrimaController {
         String unidad = req.queryParams("unidad");
 
         MateriaPrima mp = new MateriaPrima(nombre, fecha_vto, stock, unidad);
-        
+
         if (mpDAO.update_MP(mp, nombreMP)) {
             return gson.toJson(mp);
         } else {
@@ -75,7 +75,7 @@ public class MateriaPrimaController {
         }
     };
 
-    public Route delete_MP = (Request req, Response res) -> {
+    public static Route delete_MP = (Request req, Response res) -> {
         res.type("application/json");
         String nombreMP = req.params(":nombreMP");
 
