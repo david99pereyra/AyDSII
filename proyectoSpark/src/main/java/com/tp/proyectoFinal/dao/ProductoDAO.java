@@ -1,4 +1,4 @@
-package com.tp.proyectoFinal.service;
+package com.tp.proyectoFinal.dao;
 
 import org.sql2o.Connection;
 import com.tp.proyectoFinal.model.Producto;

@@ -1,8 +1,8 @@
 package com.tp.proyectoFinal.controller;
 
 import com.google.gson.Gson;
+import com.tp.proyectoFinal.dao.ProductoDAO;
 import com.tp.proyectoFinal.model.Producto;
-import com.tp.proyectoFinal.service.ProductoDAO;
 
 import java.util.*;
 
