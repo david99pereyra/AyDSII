@@ -19,13 +19,19 @@ public class ProductoController {
         res.type("application/json");
         String nombre_producto = req.queryParams("nombre_producto");
         int precio = Integer.parseInt(req.queryParams("precio"));
+        int cant_porciones = Integer.parseInt(req.queryParams("cant_porciones"));
 
-        Producto producto = new Producto(nombre_producto, precio);
+        if (nombre_producto == null || req.queryParams("precio") == null || req.queryParams("cant_porciones") == null) {
+            res.status(400);
+            return gson.toJson("Todos los campos son obligatorios");
+        }
+
+        Producto producto = new Producto(nombre_producto, precio, cant_porciones);
         boolean resp = prDAO.crear_producto(producto);
         if (resp) {
             return gson.toJson(producto);
         } else {
-            return gson.toJson("La informacion no se ha cargado con exito");
+            return gson.toJson("La informacion NO se ha cargado con exito");
         }
     };
 

@@ -7,17 +7,18 @@ import java.util.*;
 public class ProductoDAO {
 
     public boolean crear_producto(Producto producto) {
-        String insertInto = "INSERT INTO PRODUCTO (nombre_producto, precio) VALUES (:nombre_producto, :precio)";
+        String insertInto = "INSERT INTO PRODUCTO (nombre_producto, precio_vta, cant_porciones) VALUES (:nombre_producto, :precio_vta, :cant_porciones)";
 
         try (Connection con = Sql2oDAO.getSql2o().open()) {
             con.createQuery(insertInto)
                     .addParameter("nombre_producto", producto.getNombre_producto())
-                    .addParameter("precio", producto.getPrecio())
+                    .addParameter("precio_vta", producto.getPrecio_vta())
+                    .addParameter("cant_porciones", producto.getCant_porciones())
                     .executeUpdate();
 
             return true;
         } catch (Exception e) {
-            System.err.println("Error al ingresar Producto" + e.getMessage());
+            System.err.println("Error al ingresar Producto " + e.getMessage());
             return false;
         }
     }
