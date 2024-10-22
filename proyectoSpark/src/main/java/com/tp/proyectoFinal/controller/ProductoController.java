@@ -14,9 +14,10 @@ public class ProductoController {
 
     private static ProductoDAO prDAO = new ProductoDAO();
     private static Gson gson = new Gson();
+    private static final String application = "application/json";
 
     public static Route crear_producto = (Request req, Response res) -> {
-        res.type("application/json");
+        res.type(application);
         String nombre_producto = req.queryParams("nombre_producto");
         int precio = Integer.parseInt(req.queryParams("precio"));
         int cant_porciones = Integer.parseInt(req.queryParams("cant_porciones"));
@@ -36,7 +37,7 @@ public class ProductoController {
     };
 
     public static Route obtener_productos = (Request req, Response res) -> {
-        res.type("application/json");
+        res.type(application);
         try {
             List<Producto> productos = prDAO.obtenerTodos();
             res.status(200);
@@ -48,9 +49,8 @@ public class ProductoController {
     };
 
     public static Route productosPorNombre = (Request req, Response res) -> {
-        res.type("application/json");
+        res.type(application);
         String nombre = req.params(":nombre");
-        System.out.println(nombre);
         try {
             List<Producto> productos = prDAO.productosPorNombre(nombre);
             res.status(200);

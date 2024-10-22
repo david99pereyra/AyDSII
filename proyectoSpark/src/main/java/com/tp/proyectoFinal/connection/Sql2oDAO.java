@@ -1,4 +1,4 @@
-package com.tp.proyectoFinal.dao;
+package com.tp.proyectoFinal.connection;
 
 import org.sql2o.Sql2o;
 

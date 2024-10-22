@@ -1,11 +1,15 @@
 package com.tp.proyectoFinal.dao;
 
 import org.sql2o.Connection;
+
+import com.tp.proyectoFinal.connection.Sql2oDAO;
+import com.tp.proyectoFinal.interfaces.IproductoDAO;
 import com.tp.proyectoFinal.model.Producto;
 import java.util.*;
 
-public class ProductoDAO {
+public class ProductoDAO implements IproductoDAO {
 
+    @Override
     public boolean crear_producto(Producto producto) {
         String insertInto = "INSERT INTO PRODUCTO (nombre_producto, precio_vta, cant_porciones) VALUES (:nombre_producto, :precio_vta, :cant_porciones)";
 
@@ -23,6 +27,7 @@ public class ProductoDAO {
         }
     }
 
+    @Override
     public List<Producto> obtenerTodos() {
         String query = "SELECT * FROM PRODUCTO";
         List<Producto> productos;
@@ -36,6 +41,7 @@ public class ProductoDAO {
         }
     }
 
+    @Override
     public List<Producto> productosPorNombre(String nombre) {
         String query = "SELECT * FROM PRODUCTO WHERE nombre_producto LIKE :nombre";
         List<Producto> productos;
