@@ -3,9 +3,11 @@ package com.tp.proyectoFinal.dao;
 import org.sql2o.Connection;
 
 import com.tp.proyectoFinal.connection.Sql2oDAO;
+import com.tp.proyectoFinal.interfaces.IproductosxpedidoDAO;
 
-public class ProductosxpedidoDAO {
+public class ProductosxpedidoDAO implements IproductosxpedidoDAO {
 
+    @Override
     public boolean existeProductoxPedido(int id_productoxpedido) {
         String query = "SELECT COUNT(*) FROM PRODUCTOXPEDIDO WHERE id_productoxpedido = :id_productoxpedido";
 

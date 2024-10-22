@@ -11,6 +11,7 @@ import spark.Response;
 import spark.Route;
 
 import java.text.*;
+import java.util.List;
 
 public class TareasController {
     private static TareasDAO tareasDAO = new TareasDAO();
@@ -60,6 +61,7 @@ public class TareasController {
         }
     };
 
+
     private static boolean validarFecha(String fecha) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false);
@@ -70,4 +72,17 @@ public class TareasController {
             return false;
         }
     }
+
+    public static Route obtener_tareas = (Request req, Response res) -> {
+        res.type("application/json");
+
+        try {
+            List<Tarea> tareas = tareasDAO.obtener_tareas();
+            res.status(200);
+            return gson.toJson(tareas);
+        } catch (Exception e) {
+            res.status(400);
+            return gson.toJson(e.getMessage());
+        }
+    };
 }

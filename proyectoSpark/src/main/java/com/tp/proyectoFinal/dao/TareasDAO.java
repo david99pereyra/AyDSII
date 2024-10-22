@@ -25,7 +25,7 @@ public class TareasDAO implements ItareasDAO {
                     .addParameter("id_productoxpedido", tarea.getId_productoxpedido())
                     .executeUpdate();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error al crear tarea" + e.getMessage());
             return false;
         }
@@ -33,7 +33,14 @@ public class TareasDAO implements ItareasDAO {
 
     @Override
     public List<Tarea> obtener_tareas() {
-        return null;
+        String query = "SELECT * FROM TAREA";
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            return con.createQuery(query).executeAndFetch(Tarea.class);
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            return null;
+        }
+
     }
 
 }

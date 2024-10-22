@@ -20,6 +20,7 @@ public class Main {
         get("/producto/:nombre", ProductoController.productosPorNombre);
 
         post("/crear_tarea", TareasController.crear_tarea);
+        get("/obtener_tareas", TareasController.obtener_tareas);
     }
 
 }
