@@ -51,6 +51,12 @@ public class ProductoController {
     public static Route productosPorNombre = (Request req, Response res) -> {
         res.type(application);
         String nombre = req.params(":nombre");
+
+        if (nombre == null) {
+            res.status(400);
+            return gson.toJson("Ingrese un nombre del producto a buscar");
+        }
+
         try {
             List<Producto> productos = prDAO.productosPorNombre(nombre);
             res.status(200);
