@@ -10,4 +10,6 @@ public interface IproductoDAO {
     public List<Producto> obtenerTodos();
 
     public List<Producto> productosPorNombre(String nombre);
+
+    public boolean crear_producto_reflexivo(Producto producto);
 }
