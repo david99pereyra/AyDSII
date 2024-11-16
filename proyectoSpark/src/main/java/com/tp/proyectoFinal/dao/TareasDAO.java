@@ -7,6 +7,7 @@ import org.sql2o.Connection;
 import com.tp.proyectoFinal.connection.Sql2oDAO;
 import com.tp.proyectoFinal.interfaces.ItareasDAO;
 import com.tp.proyectoFinal.model.Tarea;
+import com.tp.proyectoFinal.model.TareaDetalle;
 
 public class TareasDAO implements ItareasDAO {
 
@@ -32,15 +33,24 @@ public class TareasDAO implements ItareasDAO {
     }
 
     @Override
-    public List<Tarea> obtener_tareas() {
-        String query = "SELECT * FROM TAREA";
+    public List<TareaDetalle> obtener_tareas() {
+        String query = """
+                    SELECT
+                        c.nombre_cliente AS cliente,
+                        pd.nombre_producto AS producto,
+                        t.*
+                    FROM
+                        tarea t
+                    INNER JOIN productoxpedido pp ON t.id_productoxpedido = pp.id_productoxpedido
+                    INNER JOIN pedido p ON pp.id_Pedido = p.id_Pedido
+                    INNER JOIN cliente c ON c.id_Cliente = p.id_Cliente
+                    INNER JOIN producto pd ON pd.id_Producto = pp.id_Producto
+                """;
         try (Connection con = Sql2oDAO.getSql2o().open()) {
-            return con.createQuery(query).executeAndFetch(Tarea.class);
+            return con.createQuery(query).executeAndFetch(TareaDetalle.class);
         } catch (Exception e) {
             System.err.println(e.toString());
             return null;
         }
-
     }
-
 }

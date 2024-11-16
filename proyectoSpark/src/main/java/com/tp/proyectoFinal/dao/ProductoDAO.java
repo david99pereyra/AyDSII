@@ -5,6 +5,8 @@ import org.sql2o.Connection;
 import com.tp.proyectoFinal.connection.Sql2oDAO;
 import com.tp.proyectoFinal.interfaces.IproductoDAO;
 import com.tp.proyectoFinal.model.Producto;
+
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class ProductoDAO implements IproductoDAO {
@@ -20,6 +22,37 @@ public class ProductoDAO implements IproductoDAO {
                     .addParameter("cant_porciones", producto.getCant_porciones())
                     .executeUpdate();
 
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al ingresar Producto " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean crear_producto_reflexivo(Producto producto) {
+        StringBuilder sql = new StringBuilder("INSERT INTO PRODUCTO (");
+        StringBuilder values = new StringBuilder("VALUES (");
+        Field[] fields = producto.getClass().getDeclaredFields();
+
+        for(int i = 0; i < fields.length; i++) {
+            fields[i].setAccessible(true);
+            sql.append(fields[i].getName());
+            values.append(":").append(fields[i].getName());
+            if(i < fields.length - 1) {
+                sql.append(", ");
+                values.append(", ");
+            }
+        }
+
+        sql.append(") ").append(values).append(")");
+
+        try (Connection con = Sql2oDAO.getSql2o().open()) {
+            var query = con.createQuery(sql.toString());
+            for (Field field : fields) {
+                field.setAccessible(true);
+                query.addParameter(field.getName(), field.get(producto));                
+            }
+            query.executeUpdate();
             return true;
         } catch (Exception e) {
             System.err.println("Error al ingresar Producto " + e.getMessage());

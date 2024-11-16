@@ -15,6 +15,7 @@ public class Main {
             res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
         });
+
         post("/producto", ProductoController.crear_producto);
         get("/producto", ProductoController.obtener_productos);
         get("/producto/:nombre", ProductoController.productosPorNombre);

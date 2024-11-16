@@ -5,6 +5,7 @@ import com.tp.proyectoFinal.dao.EstadoDAO;
 import com.tp.proyectoFinal.dao.ProductosxpedidoDAO;
 import com.tp.proyectoFinal.dao.TareasDAO;
 import com.tp.proyectoFinal.model.Tarea;
+import com.tp.proyectoFinal.model.TareaDetalle;
 
 import spark.Request;
 import spark.Response;
@@ -55,12 +56,12 @@ public class TareasController {
 
         boolean resp = tareasDAO.crear_tarea(tarea);
         if (resp) {
+            res.status(201);
             return gson.toJson(tarea);
         } else {
             return gson.toJson("La informacion NO se ha cargado con exito");
         }
     };
-
 
     private static boolean validarFecha(String fecha) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -77,7 +78,7 @@ public class TareasController {
         res.type("application/json");
 
         try {
-            List<Tarea> tareas = tareasDAO.obtener_tareas();
+            List<TareaDetalle> tareas = tareasDAO.obtener_tareas();
             res.status(200);
             return gson.toJson(tareas);
         } catch (Exception e) {
