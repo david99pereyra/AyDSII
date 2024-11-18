@@ -17,13 +17,7 @@ public class TareasDAO implements ItareasDAO {
         String query = "INSERT INTO tarea (descripcion, fecha_inicio, fecha_finalizacion, prioridad, id_Estado, id_productoxpedido) VALUES (:descripcion, :fecha_inicio, :fecha_finalizacion, :prioridad, :id_Estado, :id_productoxpedido)";
 
         try (Connection con = Sql2oDAO.getSql2o().open()) {
-            con.createQuery(query)
-                    .addParameter("descripcion", tarea.getDescripcion())
-                    .addParameter("fecha_inicio", tarea.getFecha_inicio())
-                    .addParameter("fecha_finalizacion", tarea.getFecha_finalizacion())
-                    .addParameter("prioridad", tarea.getPrioridad())
-                    .addParameter("id_Estado", tarea.getId_Estado())
-                    .addParameter("id_productoxpedido", tarea.getId_productoxpedido())
+            con.createQuery(query).bind(tarea)
                     .executeUpdate();
             return true;
         } catch (Exception e) {
