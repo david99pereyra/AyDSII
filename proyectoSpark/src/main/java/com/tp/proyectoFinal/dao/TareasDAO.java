@@ -32,13 +32,15 @@ public class TareasDAO implements ItareasDAO {
                     SELECT
                         c.nombre_cliente AS cliente,
                         pd.nombre_producto AS producto,
-                        t.*
+                        t.descripcion, t.fecha_inicio, t.fecha_finalizacion, t.prioridad,
+                        e.descripcion_estado AS estado
                     FROM
                         tarea t
                     INNER JOIN productoxpedido pp ON t.id_productoxpedido = pp.id_productoxpedido
                     INNER JOIN pedido p ON pp.id_Pedido = p.id_Pedido
                     INNER JOIN cliente c ON c.id_Cliente = p.id_Cliente
                     INNER JOIN producto pd ON pd.id_Producto = pp.id_Producto
+                    INNER JOIN estado e ON e.id_Estado = t.id_Estado
                 """;
         try (Connection con = Sql2oDAO.getSql2o().open()) {
             return con.createQuery(query).executeAndFetch(TareaDetalle.class);

@@ -5,6 +5,7 @@ import java.util.List;
 import com.tp.proyectoFinal.model.Producto;
 
 public interface IproductoDAO {
+
     public boolean crear_producto(Producto producto);
 
     public List<Producto> obtenerTodos();
@@ -12,4 +13,5 @@ public interface IproductoDAO {
     public List<Producto> productosPorNombre(String nombre);
 
     public boolean crear_producto_reflexivo(Producto producto);
+
 }

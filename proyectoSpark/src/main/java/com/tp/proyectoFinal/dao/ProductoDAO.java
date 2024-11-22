@@ -28,18 +28,18 @@ public class ProductoDAO implements IproductoDAO {
             return false;
         }
     }
-    
+
     @Override
     public boolean crear_producto_reflexivo(Producto producto) {
         StringBuilder sql = new StringBuilder("INSERT INTO PRODUCTO (");
         StringBuilder values = new StringBuilder("VALUES (");
         Field[] fields = producto.getClass().getDeclaredFields();
 
-        for(int i = 0; i < fields.length; i++) {
+        for (int i = 0; i < fields.length; i++) {
             fields[i].setAccessible(true);
             sql.append(fields[i].getName());
             values.append(":").append(fields[i].getName());
-            if(i < fields.length - 1) {
+            if (i < fields.length - 1) {
                 sql.append(", ");
                 values.append(", ");
             }
@@ -51,7 +51,7 @@ public class ProductoDAO implements IproductoDAO {
             var query = con.createQuery(sql.toString());
             for (Field field : fields) {
                 field.setAccessible(true);
-                query.addParameter(field.getName(), field.get(producto));                
+                query.addParameter(field.getName(), field.get(producto));
             }
             query.executeUpdate();
             return true;
